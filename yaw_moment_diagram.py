@@ -8,7 +8,8 @@ import streamlit as st
 import pandas as pd
 vehicle = vehicle_model("parameters/test_model.ini")
 
-vx = 65/3.6
+vx = st.slider('Select Velocity in km/h', 50, 90, 65)
+vx = vx/3.6
 max_d = 10
 max_b = 3
 SR = 0
@@ -37,6 +38,10 @@ for delta_ in np.linspace(-max_d,max_d,11):
 
     ax.plot(*zip(*([(state_n.ay, state_n.yaw_moment) for state_n in states])), label=f"delta: {delta_}", color="red")
 #ax.legend()
-ax.axhline(y=0)
-ax.axhline(x=0)
+#ax.axhline(y=0)
+#ax.axhline(x=0)
 plt.show()
+ax.set_xlabel("Lateral Acceleration [m/s²]")
+ax.set_ylabel("Yaw Moment [Nm]")
+
+st.pyplot(fig)
