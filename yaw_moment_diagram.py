@@ -14,7 +14,11 @@ max_d = 10
 max_b = 3
 SR = 0
 
+style_choice = st.selectbox(
+    'How would you like to view the data?',
+    ('classic', 'seaborn-whitegrid', 'dark_background', 'ggplot'))
 
+plt.style.use(style_choice)
 all_states = []
 fig, ax = plt.subplots()
 
