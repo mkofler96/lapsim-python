@@ -24,18 +24,18 @@ class TMSimple:
         self.c2y =  -float(params["fyin_fzn"]) + 0.5*float(params["fyin_2fzn"]) 
         
         # I don't know which values are correct
-        #a1x = (fxmx_2fzn-fxmx_fzn*((fz_2nom)^2 / (fz_nom)^2)) / ((fz_2nom/fz_nom)-((fz_2nom)^2 / (fz_nom)^2)) 
+        #a1x = (fxmx_2fzn-fxmx_fzn*((fz_2nom)**2 / (fz_nom)**2)) / ((fz_2nom/fz_nom)-((fz_2nom)**2 / (fz_nom)**2)) 
         #a2x = fxmx_fzn - a1x 
-        #b1x = (dfx0_2fzn-dfx0_fzn*((fz_2nom)^2 / (fz_nom)^2)) / ((fz_2nom/fz_nom)-((fz_2nom)^2 / (fz_nom)^2)) 
+        #b1x = (dfx0_2fzn-dfx0_fzn*((fz_2nom)**2 / (fz_nom)**2)) / ((fz_2nom/fz_nom)-((fz_2nom)**2 / (fz_nom)**2)) 
         #b2x = dfx0_fzn - b1x 
-        #c1x = (fxin_2fzn-fxin_fzn*((fz_2nom)^2 / (fz_nom)^2)) / ((fz_2nom/fz_nom)-((fz_2nom)^2 / (fz_nom)^2)) 
+        #c1x = (fxin_2fzn-fxin_fzn*((fz_2nom)**2 / (fz_nom)**2)) / ((fz_2nom/fz_nom)-((fz_2nom)**2 / (fz_nom)**2)) 
         #c2x = fxin_fzn - c1x 
 
-        #a1y = (fymx_2fzn-fymx_fzn*((fz_2nom)^2 / (fz_nom)^2)) / ((fz_2nom/fz_nom)-((fz_2nom)^2 / (fz_nom)^2)) 
+        #a1y = (fymx_2fzn-fymx_fzn*((fz_2nom)**2 / (fz_nom)**2)) / ((fz_2nom/fz_nom)-((fz_2nom)**2 / (fz_nom)**2)) 
         #a2y = fymx_fzn - a1y 
-        #b1y = (dfy0_2fzn-dfy0_fzn*((fz_2nom)^2 / (fz_nom)^2)) / ((fz_2nom/fz_nom)-((fz_2nom)^2 / (fz_nom)^2)) 
+        #b1y = (dfy0_2fzn-dfy0_fzn*((fz_2nom)**2 / (fz_nom)**2)) / ((fz_2nom/fz_nom)-((fz_2nom)**2 / (fz_nom)**2)) 
         #b2y = dfy0_fzn - b1y 
-        #c1y = (fyin_2fzn-fyin_fzn*((fz_2nom)^2 / (fz_nom)^2)) / ((fz_2nom/fz_nom)-((fz_2nom)^2 / (fz_nom)^2)) 
+        #c1y = (fyin_2fzn-fyin_fzn*((fz_2nom)**2 / (fz_nom)**2)) / ((fz_2nom/fz_nom)-((fz_2nom)**2 / (fz_nom)**2)) 
         #c2y = fyin_fzn - c1y 
 
         #MZ

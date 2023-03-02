@@ -1,2 +1,6 @@
 /statees.csv
 /yaw_mom.csv
+__pycache__/racetrack.cpython-311.pyc
+.gitignore
+.vscode/launch.json
+__pycache__/lapsimple.cpython-311.pyc

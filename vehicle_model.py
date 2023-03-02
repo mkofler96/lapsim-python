@@ -80,7 +80,7 @@ class vehicle_model:
         cDA = self.aero["cd"]*self.aero["farea"]
         AeroDistr = self.aero["distr"]
         # resulting Fz Aero
-        AirDen = self.env["rho"]  # in kg/m^3
+        AirDen = self.env["rho"]  # in kg/m**3
         FAero = (0.5  * cLA  * AirDen  * state.vx**2)*np.array([AeroDistr/2,AeroDistr/2,(1-AeroDistr)/2,(1-AeroDistr)/2])
 
         ## combining Aero and 10_Einspurmodelle
