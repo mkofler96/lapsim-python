@@ -62,6 +62,8 @@ for index, row in edited_df.iterrows():
 #ax.set_title(f"Laptime: {sum(rt.u/v)}")
 
 ax1.set_ylim(0,maxv*1.2*3.6)
+ax1.set_ylabel("Velocity (km/h)")
+ax1.set_xlabel("Distance (m)")
 ax2.plot(rt.rawx, rt.rawy)
 ax2.set_aspect('equal')
 ax2.get_xaxis().set_visible(False)
