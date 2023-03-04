@@ -7,6 +7,12 @@ import numpy as np
 import streamlit as st
 import os
 
+# todo: put this function into lapsim class together with calculate laptime
+def seconds_to_time(seconds):
+    minutes, seconds = divmod(seconds, 60)
+    seconds, hundreds = divmod(seconds, 1)
+    hundreds = int(hundreds * 100)
+    return "{:02d}:{:02d}:{:03d}".format(int(minutes), int(seconds), hundreds)
 
 parent_dir = os.path.abspath('.')  # get absolute path of parent directory
 available_tracks = os.listdir(os.path.join(parent_dir, "tracks"))
@@ -15,8 +21,8 @@ st.set_page_config(page_title="Lap Time Simulation", layout="wide")
 
 df = pd.DataFrame(
     [
-       {"Name": "F1 Car", "Power": 1000, "Mass": 800, "cLA": 4.0, "cDA": 2.0, "mu_x": 1.0, "mu_y": 1.0},
-       {"Name": "F2 Car", "Power": 620, "Mass": 750, "cLA": 4.0, "cDA": 2.0, "mu_x": 1.0, "mu_y": 1.0}
+       {"Name": "F1 Car", "Power": 1000, "Mass": 800, "cLA": 4.0, "cDA": 2.0, "mu_x": 3.0, "mu_y": 3.0},
+       {"Name": "F2 Car", "Power": 620, "Mass": 750, "cLA": 4.0, "cDA": 2.0, "mu_x": 3.0, "mu_y": 3.0}
    ]
 )
 
@@ -49,7 +55,7 @@ for index, row in edited_df.iterrows():
         maxv = max(v)
     laptime = round(sum(rt.u/v),3)
 
-    ax1.plot(rt.dist, v*3.6, label=row["Name"] + f": {laptime} s")
+    ax1.plot(rt.dist, v*3.6, label=row["Name"] + f": {seconds_to_time(laptime)}")
     
     ax1.set_xlim(rt.dist.min(), rt.dist.max())
     ax1.legend()
