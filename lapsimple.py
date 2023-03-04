@@ -28,7 +28,7 @@ class lapsimple:
 
     def interpolate_ax(self, ay, v, dir):
         if dir in ["fwd", "f"]:
-            ax_mx = self.mu_x*9.81 + (self.mu_x*self.cLA - self.cDA)*0.5*self.rho*v**2/self.mass
+            ax_mx = self.mu_x*9.81 + (self.mu_x*self.cLA)*0.5*self.rho*v**2/self.mass
         elif dir in ["bwd", "b"]:
             ax_mx = self.mu_x*9.81 + (self.mu_x*self.cLA + self.cDA)*0.5*self.rho*v**2/self.mass
 
@@ -39,7 +39,7 @@ class lapsimple:
             return 0
         ax = np.sqrt(t)
         #limit engine
-        ax_mx_engine = self.power*1360/(v*self.mass)
+        ax_mx_engine = self.power*1360/(v*self.mass)  - self.cDA*0.5*self.rho*v**2/self.mass
         if np.isnan(ax):
             ax = 0
         if ax>ax_mx_engine and dir not in ["bwd", "b"]:
@@ -76,7 +76,6 @@ class lapsimple:
         grad_u = self.track.u
 
         if dir in ["fwd", "f"]:
-            print("forward integration")
             # forward integration
             s = corners[0]
             # start from first 'apex' and integrate forward
@@ -110,7 +109,6 @@ class lapsimple:
         
         # backward integration
         elif dir in ["bwd", "b"]:
-            print("backward integration")
             s = self.track.corners[-1]     
             # start from last 'apex' and integrate backwards
             for kk in range(s,1,-1): 

@@ -6,7 +6,7 @@ from TMSimple import TMSimple
 from vehicle_model import vehicle_model, state
 import streamlit as st
 import pandas as pd
-vehicle = vehicle_model("parameters/test_model.ini")
+vehicle = vehicle_model("../parameters/test_model.ini")
 
 vx = st.slider('Select Velocity in km/h', 50, 90, 65)
 vx = vx/3.6
