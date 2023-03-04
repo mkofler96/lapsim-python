@@ -27,9 +27,11 @@ df = pd.DataFrame(
 )
 
 col1, col2 = st.columns(2)
+available_tracks.sort()
+track_list = [os.path.splitext(file)[0] for file in available_tracks]
 
 with col1:
-    track_choice = st.selectbox('Select Track', [os.path.splitext(file)[0] for file in available_tracks])
+    track_choice = st.selectbox('Select Track', track_list)
 
     #mu_x = st.number_input('mu x', value=1)
     #mu_y = st.number_input('mu y', value=1)
