@@ -12,7 +12,7 @@ def seconds_to_time(seconds):
     minutes, seconds = divmod(seconds, 60)
     seconds, hundreds = divmod(seconds, 1)
     hundreds = int(hundreds * 100)
-    return "{:02d}:{:02d}:{:03d}".format(int(minutes), int(seconds), hundreds)
+    return "{:02d}:{:02d}.{:03d}".format(int(minutes), int(seconds), hundreds)
 
 parent_dir = os.path.abspath('.')  # get absolute path of parent directory
 available_tracks = os.listdir(os.path.join(parent_dir, "tracks"))
