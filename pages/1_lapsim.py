@@ -15,7 +15,8 @@ st.set_page_config(page_title="Lap Time Simulation", layout="wide")
 
 df = pd.DataFrame(
     [
-       {"Name": "Formula 1 Car", "Power": 600, "Mass": 1000, "cLA": 4, "cDA": 1, "mu_x": 1, "mu_y": 1},
+       {"Name": "F1 Car", "Power": 1000, "Mass": 800, "cLA": 4.0, "cDA": 2.0, "mu_x": 1.0, "mu_y": 1.0},
+       {"Name": "F2 Car", "Power": 620, "Mass": 750, "cLA": 4.0, "cDA": 2.0, "mu_x": 1.0, "mu_y": 1.0}
    ]
 )
 
@@ -34,7 +35,7 @@ with col1:
 
     fig1, ax1 = plt.subplots()
 fig2, ax2 = plt.subplots()
-
+maxv = 0
 for index, row in edited_df.iterrows():
     my_car = car(mu_x = row["mu_x"], mu_y =row["mu_y"], mass = row["Mass"], power = row["Power"], cLA = row["cLA"], cDA = row["cDA"], rho = 1.2)
 
@@ -44,13 +45,17 @@ for index, row in edited_df.iterrows():
     v_fwd = sim.intTrack(dir="fwd")
     v_bwd = sim.intTrack(dir="bwd")
     v = np.minimum(v_fwd, v_bwd)
+    if max(v)>maxv:
+        maxv = max(v)
+    laptime = round(sum(rt.u/v),3)
 
-    ax1.plot(rt.dist, v*3.6, label=row["Name"])
-    ax1.set_ylim(bottom=0)
+    ax1.plot(rt.dist, v*3.6, label=row["Name"] + f": {laptime} s")
+    
     ax1.set_xlim(rt.dist.min(), rt.dist.max())
     ax1.legend()
 #ax.set_title(f"Laptime: {sum(rt.u/v)}")
 
+ax1.set_ylim(0,maxv*1.2*3.6)
 ax2.plot(rt.rawx, rt.rawy)
 ax2.set_aspect('equal')
 ax2.get_xaxis().set_visible(False)
